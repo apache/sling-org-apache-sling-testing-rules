@@ -37,9 +37,9 @@
     </description>
     
     <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/sling/trunk/testing/junit/rules</connection>
+        <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-testing-rules.git</conncetion>
         <developerConnection> scm:svn:https://svn.apache.org/repos/asf/sling/trunk/testing/junit/rules</developerConnection>
-        <url>http://svn.apache.org/viewvc/sling/trunk/testing/junit/rules</url>
+        <url>https://gitbox.apache.org/repos/asf?p=sling-org-apache-sling-testing-rules.git.git</url>
     </scm>
 
     <build>
