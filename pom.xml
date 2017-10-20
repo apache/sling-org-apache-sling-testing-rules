@@ -38,8 +38,8 @@
     
     <scm>
         <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-testing-rules.git</conncetion>
-        <developerConnection> scm:svn:https://svn.apache.org/repos/asf/sling/trunk/testing/junit/rules</developerConnection>
-        <url>https://gitbox.apache.org/repos/asf?p=sling-org-apache-sling-testing-rules.git.git</url>
+        <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-testing-rules.git</developerConnection>
+        <url>https://gitbox.apache.org/repos/asf?p=sling-org-apache-sling-testing-rules.git</url>
     </scm>
 
     <build>
