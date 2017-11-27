@@ -21,7 +21,9 @@ import org.apache.sling.testing.clients.instance.InstanceConfiguration;
 import org.apache.sling.testing.clients.instance.InstanceSetup;
 import org.junit.rules.TestRule;
 
-public interface Instance extends TestRule {
+import java.beans.Customizer;
+
+public interface Instance extends TestRule, BuilderCustomizer {
 
     Instance withRunMode(String runMode);
 
@@ -31,6 +33,7 @@ public interface Instance extends TestRule {
 
     /**
      * Return <strong>a new client</strong> pointing to the instance corresponding to this {{AbstractInstance}}
+     * if it was never created with this username and password, or the existing client if it has been created before
      *
      * @param clientClass the class of the returned client
      * @param user the username used in the client
@@ -42,7 +45,8 @@ public interface Instance extends TestRule {
 
     /**
      * Return <strong>a new client</strong> pointing to the instance corresponding to this {{AbstractInstance}},
-     * with the admin user and password.
+     * with the admin user and password, if it was not previously created, or the existing client if it has been created before
+     *
      * See {@link InstanceSetup#INSTANCE_CONFIG_ADMINUSER} and {@link InstanceSetup#INSTANCE_CONFIG_ADMINPASSWORD}
      *
      * @return a new {{SlingClient}}
@@ -51,7 +55,8 @@ public interface Instance extends TestRule {
 
     /**
      * Return <strong>a new client</strong> pointing to the instance corresponding to this {{AbstractInstance}},
-     * with the admin user and password.
+     * with the admin user and password, if it was not previously created, or the existing client if it has been created before
+     *
      * See {@link InstanceSetup#INSTANCE_CONFIG_ADMINUSER} and {@link InstanceSetup#INSTANCE_CONFIG_ADMINPASSWORD}
      *
      * @param clientClass the class of the returned client
@@ -59,5 +64,29 @@ public interface Instance extends TestRule {
      * @return a new client extending on {{SlingClient}}
      */
     <T extends SlingClient> T getAdminClient(Class<T> clientClass);
+
+
+
+    /**
+     * Return <strong>a new client</strong> pointing to the instance corresponding to this {{AbstractInstance}},
+     * replacing the internally-cached client with this username and password
+     *
+     * @param clientClass the class of the returned client
+     * @param user the username used in the client
+     * @param pass the password used in the client
+     * @param <T> the type of the returned client
+     * @return a new client extending {{SlingClient}}
+     */
+    <T extends SlingClient> T newClient(Class<T> clientClass, String user, String pass, BuilderCustomizer... customizers);
+
+    /**
+     * Return <strong>a new client</strong> pointing to the instance corresponding to this {{AbstractInstance}},
+     * replacing the internally-cached client with this username and password
+     *
+     * See {@link InstanceSetup#INSTANCE_CONFIG_ADMINUSER} and {@link InstanceSetup#INSTANCE_CONFIG_ADMINPASSWORD}
+     *
+     * @return a new {{SlingClient}}
+     */
+    SlingClient newAdminClient(BuilderCustomizer... customizers);
 
 }
