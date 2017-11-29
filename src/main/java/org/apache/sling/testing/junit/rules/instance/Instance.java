@@ -21,8 +21,6 @@ import org.apache.sling.testing.clients.instance.InstanceConfiguration;
 import org.apache.sling.testing.clients.instance.InstanceSetup;
 import org.junit.rules.TestRule;
 
-import java.beans.Customizer;
-
 public interface Instance extends TestRule, BuilderCustomizer {
 
     Instance withRunMode(String runMode);
