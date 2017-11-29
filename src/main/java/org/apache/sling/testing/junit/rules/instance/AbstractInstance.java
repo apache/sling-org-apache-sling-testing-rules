@@ -23,7 +23,6 @@ import org.apache.sling.testing.clients.instance.InstanceConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -60,7 +59,7 @@ public abstract class AbstractInstance implements Instance {
             for (BuilderCustomizer customizer: customizers) {
                 builder = customizer.customize(builder);
             }
-            T client = builder.build();
+            T client = builder.build().adaptTo(clientClass);
             clientsCache.put(user + pass, client);
             return client;
         } catch (ClientException e) {
