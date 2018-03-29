@@ -73,6 +73,7 @@ public interface Instance extends TestRule, BuilderCustomizer {
      * @param user the username used in the client
      * @param pass the password used in the client
      * @param <T> the type of the returned client
+     * @param customizers array of customizers for this client
      * @return a new client extending {{SlingClient}}
      */
     <T extends SlingClient> T newClient(Class<T> clientClass, String user, String pass, BuilderCustomizer... customizers);
@@ -83,6 +84,7 @@ public interface Instance extends TestRule, BuilderCustomizer {
      *
      * See {@link InstanceSetup#INSTANCE_CONFIG_ADMINUSER} and {@link InstanceSetup#INSTANCE_CONFIG_ADMINPASSWORD}
      *
+     * @param customizers array of customizers for this client
      * @return a new {{SlingClient}}
      */
     SlingClient newAdminClient(BuilderCustomizer... customizers);
