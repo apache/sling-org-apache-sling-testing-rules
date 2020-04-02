@@ -30,6 +30,8 @@ import org.apache.sling.testing.junit.rules.instance.Instance;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static org.apache.sling.testing.clients.interceptors.TestDescriptionInterceptor.TEST_CLASS_HEADER;
 import static org.apache.sling.testing.clients.interceptors.TestDescriptionInterceptor.TEST_NAME_HEADER;
@@ -58,6 +60,9 @@ import static org.apache.sling.testing.clients.interceptors.TestDescriptionInter
  * </pre>
  */
 public class RemoteLogDumperRule extends TestWatcher {
+
+    private static final Logger LOG = LoggerFactory.getLogger(RemoteLogDumperRule.class);
+
     /**
      * Path for the org.apache.sling.junit.impl.servlet.TestLogServlet
      */
@@ -125,18 +130,14 @@ public class RemoteLogDumperRule extends TestWatcher {
                     pw.println(msg);
                 }
 
-                pw.printf("=============== Logs from server [%s] for [%s]===================%n",
-                        slingClient.getUrl(), description.getMethodName());
-                pw.print(response.getContent());
-                pw.println("========================================================");
-
-                System.err.print(sw.toString());
+                LOG.info("=============== Logs from server {} for {}===================\n{}",
+                        slingClient.getUrl(), description.getMethodName(), response.getContent());
+                LOG.info("========================================================");
             } catch (Throwable t) {
-                System.err.printf("Error occurred while fetching test logs from server [%s] %n", slingClient.getUrl());
-                t.printStackTrace(System.err);
+                LOG.debug("Error occurred while fetching test logs from server [{}]: {}", slingClient.getUrl(), t);
             }
         } else {
-            System.err.println("No SlingClient configured with the rule");
+            LOG.debug("No SlingClient configured with the rule");
         }
     }
 }
