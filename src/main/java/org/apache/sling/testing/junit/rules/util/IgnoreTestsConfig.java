@@ -17,7 +17,7 @@
 package org.apache.sling.testing.junit.rules.util;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.sling.testing.clients.Constants;
+import org.apache.sling.testing.clients.SystemPropertiesConfig;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,8 +25,8 @@ import java.util.StringTokenizer;
 
 public class IgnoreTestsConfig {
 
-    public static final String IGNORE_LIST_PROP = Constants.CONFIG_PROP_PREFIX + "ignorelist";
-    public static final String RUN_IGNORE_LIST_PROP = Constants.CONFIG_PROP_PREFIX + "ignorelist.run";
+    public static final String IGNORE_LIST_PROP = SystemPropertiesConfig.CONFIG_PROP_PREFIX + "ignorelist";
+    public static final String RUN_IGNORE_LIST_PROP = SystemPropertiesConfig.CONFIG_PROP_PREFIX + "ignorelist.run";
 
     private final int numberOfIgnoreLists = 3;
     private final boolean runIgnoreList;
