@@ -12,7 +12,7 @@ with specialized http clients.
 
 The junit rules incorporate boiler-plate logic that is shared in tests and take the modern approach of using junit rules rather than 
 inheritance. The `SlingRule` (for methods) or `SlingClassRule` are base rules, chaining other rules like `TestTimeoutRule`, 
-`TestDescriptionRule`, `FilterRule`. The `SlingInstanceRule` extends that and starts a Sling instance if needed and also allows 
+`TestDescriptionRule`, `FilterRule` or `CustomUserAgentRule`. The `SlingInstanceRule` extends that and starts a Sling instance if needed and also allows 
 instantiating a `SlingClient` pointing to the instance - base url, credentials, etc.
     
 
