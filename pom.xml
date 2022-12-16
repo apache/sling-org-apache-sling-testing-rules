@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.sling</groupId>
         <artifactId>sling-bundle-parent</artifactId>
-        <version>39</version>
+        <version>48</version>
         <relativePath />
     </parent>
 
@@ -34,6 +34,10 @@
     <description>
         Sling testing junit rules and utils
     </description>
+
+    <properties>
+        <project.build.outputTimestamp>10</project.build.outputTimestamp>
+    </properties>
     
     <scm>
         <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-testing-rules.git</connection>
