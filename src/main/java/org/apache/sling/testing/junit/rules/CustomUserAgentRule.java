@@ -16,12 +16,23 @@
  */
 package org.apache.sling.testing.junit.rules;
 
+import org.apache.http.client.HttpClient;
+import org.apache.sling.testing.clients.SlingClient;
 import org.apache.sling.testing.clients.SystemPropertiesConfig;
 import org.apache.sling.testing.clients.interceptors.UserAgentHolder;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
+/**
+ * Junit rule to overwrite or append the user-agent of all {@link SlingClient}
+ * http requests with a custom {@link String}.
+ * </p>
+ * May be used on a per class or per test basis.
+ * </p>
+ * (In case the
+ * user-agent of the {@link HttpClient} is tampered with manually changes will not be applied.)
+ */
 @SuppressWarnings("unused")
 public class CustomUserAgentRule implements TestRule {
 
@@ -29,10 +40,19 @@ public class CustomUserAgentRule implements TestRule {
 
     private final boolean append;
 
+    /**
+     * Overwrite the user-agent with a custom {@link String}.
+     * @param userAgent the new user-agent
+     */
     public CustomUserAgentRule(String userAgent) {
         this(userAgent, false);
     }
 
+    /**
+     * Modify or overwrite the user-agent.
+     * @param userAgent the desired user-agent
+     * @param append whether it should just be appended to the current one
+     */
     public CustomUserAgentRule(String userAgent, boolean append) {
         this.userAgent = userAgent;
         this.append = append;
