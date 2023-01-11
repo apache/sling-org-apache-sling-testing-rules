@@ -27,9 +27,9 @@ import org.junit.runners.model.Statement;
 /**
  * Junit rule to overwrite or append the user-agent of all {@link SlingClient}
  * http requests with a custom {@link String}.
- * </p>
+ * <br>
  * May be used on a per class or per test basis.
- * </p>
+ * <br>
  * (In case the
  * user-agent of the {@link HttpClient} is tampered with manually changes will not be applied.)
  */
