@@ -28,7 +28,7 @@
     </parent>
 
     <artifactId>org.apache.sling.testing.rules</artifactId>
-    <version>2.0.2</version>
+    <version>2.0.3-SNAPSHOT</version>
 
     <name>Apache Sling Testing Rules</name>
     <description>
@@ -36,14 +36,14 @@
     </description>
 
     <properties>
-        <project.build.outputTimestamp>1673434181</project.build.outputTimestamp>
+        <project.build.outputTimestamp>1673434206</project.build.outputTimestamp>
     </properties>
     
     <scm>
         <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-testing-rules.git</connection>
         <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-testing-rules.git</developerConnection>
         <url>https://gitbox.apache.org/repos/asf?p=sling-org-apache-sling-testing-rules.git</url>
-      <tag>org.apache.sling.testing.rules-2.0.2</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <build>
